@@ -1,8 +1,0 @@
-usage: .debug type [on | off]
-
-type:
-    preparedstatement
-    resultset
-
-Example:
-.debug resultset on

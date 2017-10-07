@@ -1,4 +1,0 @@
-CREATE PROCEDURE simpleproc (OUT c INT)
-BEGIN
-	SELECT COUNT(*) INTO c FROM MyTable;
-END;

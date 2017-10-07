@@ -1,5 +1,0 @@
-.prepare
-SQL statement
-
-This command is mostly for checking the parameter types required.  It works
-in conjunction with .debug preparedstatement on
