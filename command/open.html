@@ -126,6 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="importschema.html">.importschema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="importtable.html">.importtable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html">.info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="limit.html">.limit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list.html">.list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="load.html">.load</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">.open</a></li>
@@ -140,11 +141,13 @@
 <li class="toctree-l2"><a class="reference internal" href="run.html">.run</a></li>
 <li class="toctree-l2"><a class="reference internal" href="script.html">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">.sort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unalias.html">.unalias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="var.html">.var</a></li>
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../json.html">JSON Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Writing Plugins</a></li>
 </ul>
@@ -222,7 +225,7 @@ session already has an open database connection, the command would fail.</p>
 settings must be configured before the protocol is used to open a connection.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>usage: .open <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>url<span class="o">]</span>
+<div class="highlight-bash"><div class="highlight"><pre>usage: .open <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>url<span class="o">]</span>
 options:
   -D &lt;<span class="nv">name</span><span class="o">=</span>value&gt;       <span class="nb">set</span> a connection property
   -f,--prompt           force password prompt
@@ -237,7 +240,7 @@ options:
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="c1">-- Open a Teradata session with client character set being UTF8.</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="c1">-- Open a Teradata session with client character set being UTF8.</span>
 <span class="p">.</span><span class="k">open</span> <span class="o">-</span><span class="n">u</span> <span class="n">dbc</span> <span class="o">-</span><span class="n">p</span> <span class="n">dbc</span> <span class="n">teradata</span><span class="p">:</span><span class="o">//</span><span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="o">/</span><span class="n">CHARSET</span><span class="o">=</span><span class="n">UTF8</span>
 <span class="p">.</span><span class="k">close</span>
 

@@ -126,6 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="importschema.html">.importschema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="importtable.html">.importtable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html">.info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="limit.html">.limit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list.html">.list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="load.html">.load</a></li>
 <li class="toctree-l2"><a class="reference internal" href="open.html">.open</a></li>
@@ -140,11 +141,13 @@
 <li class="toctree-l2"><a class="reference internal" href="run.html">.run</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">.sort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unalias.html">.unalias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="var.html">.var</a></li>
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../json.html">JSON Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Writing Plugins</a></li>
 </ul>
@@ -219,7 +222,7 @@
 <p><code class="docutils literal"><span class="pre">.script</span></code> runs a script in languages such as JavaScript.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre><span></span>usage: .script [options] [file]
+<div class="highlight-text"><div class="highlight"><pre>usage: .script [options] [file]
 options:
   -c,--charset &lt;arg&gt;   specifies the file character set
   -l,--lang &lt;arg&gt;      specifies the language
@@ -236,7 +239,7 @@ a line by itself.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre><span></span>-- test running a script from a file using a temporary script engine.
+<div class="highlight-text"><div class="highlight"><pre>-- test running a script from a file using a temporary script engine.
 .script -t lib/print.js
 
 -- test running a script using a non-temporary script engine

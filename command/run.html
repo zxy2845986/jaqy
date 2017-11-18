@@ -126,6 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="importschema.html">.importschema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="importtable.html">.importtable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html">.info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="limit.html">.limit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list.html">.list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="load.html">.load</a></li>
 <li class="toctree-l2"><a class="reference internal" href="open.html">.open</a></li>
@@ -140,11 +141,13 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">.run</a></li>
 <li class="toctree-l2"><a class="reference internal" href="script.html">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">.sort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unalias.html">.unalias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="var.html">.var</a></li>
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../json.html">JSON Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Writing Plugins</a></li>
 </ul>
@@ -221,7 +224,7 @@ directory such that subsequent commands such as <code class="docutils literal"><
 are all relative to this directory.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre><span></span>usage: .run [options] [file]
+<div class="highlight-text"><div class="highlight"><pre>usage: .run [options] [file]
 options:
   -c,--charset &lt;arg&gt;   sets the file character set
 </pre></div>
@@ -229,7 +232,7 @@ options:
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="c1">-- Run lib/test.sql and sets the current script directory to lib/</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="c1">-- Run lib/test.sql and sets the current script directory to lib/</span>
 <span class="p">.</span><span class="n">run</span> <span class="n">lib</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="k">sql</span>
 </pre></div>
 </div>

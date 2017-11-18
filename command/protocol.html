@@ -126,6 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="importschema.html">.importschema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="importtable.html">.importtable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html">.info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="limit.html">.limit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list.html">.list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="load.html">.load</a></li>
 <li class="toctree-l2"><a class="reference internal" href="open.html">.open</a></li>
@@ -140,11 +141,13 @@
 <li class="toctree-l2"><a class="reference internal" href="run.html">.run</a></li>
 <li class="toctree-l2"><a class="reference internal" href="script.html">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">.sort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unalias.html">.unalias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="var.html">.var</a></li>
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../json.html">JSON Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Writing Plugins</a></li>
 </ul>
@@ -219,7 +222,7 @@
 <p><code class="docutils literal"><span class="pre">.protocol</span></code> sets the JDBC driver for a particular protocol.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre><span></span>usage: .protocol [protocol name] [JDBC driver name]
+<div class="highlight-text"><div class="highlight"><pre>usage: .protocol [protocol name] [JDBC driver name]
 </pre></div>
 </div>
 <p>Without any arguments, it will just list the current protocol / driver
@@ -227,7 +230,7 @@ mappings.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="c1">-- Set postgresql Driver class name</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="c1">-- Set postgresql Driver class name</span>
 <span class="p">.</span><span class="n">protocol</span> <span class="n">postgresql</span> <span class="n">org</span><span class="p">.</span><span class="n">postgresql</span><span class="p">.</span><span class="n">Driver</span>
 
 <span class="c1">-- List current protocol / driver mappings.</span>

@@ -39,7 +39,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Jaqy 1.0 documentation" href="index.html"/>
         <link rel="next" title="Writing Plugins" href="plugin.html"/>
-        <link rel="prev" title=".version" href="command/version.html"/> 
+        <link rel="prev" title="Exit Code" href="exitcode.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -101,6 +101,7 @@
 <p class="caption"><span class="caption-text">References</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="command.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exitcode.html">Exit Code</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">JSON Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#field-description">Field Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
@@ -199,7 +200,7 @@ to construct the SQL query.</p>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>MySQL configuration</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
         <span class="nt">&quot;protocol&quot;</span><span class="p">:</span>     <span class="s2">&quot;mysql&quot;</span><span class="p">,</span>
         <span class="nt">&quot;features&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nt">&quot;schema&quot;</span> <span class="p">:</span> <span class="kc">false</span>
@@ -220,7 +221,7 @@ to construct the SQL query.</p>
 </pre></div>
 </div>
 <p>SQLite configuration</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
         <span class="nt">&quot;protocol&quot;</span><span class="p">:</span>     <span class="s2">&quot;sqlite&quot;</span><span class="p">,</span>
         <span class="nt">&quot;tableSchemaSQL&quot;</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nt">&quot;sql&quot;</span> <span class="p">:</span> <span class="s2">&quot;SELECT sql FROM SQLITE_MASTER WHERE NAME = &#39;&#39;{0}&#39;&#39;  COLLATE NOCASE&quot;</span><span class="p">,</span>
@@ -249,7 +250,7 @@ to construct the SQL query.</p>
         <a href="plugin.html" class="btn btn-neutral float-right" title="Writing Plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="command/version.html" class="btn btn-neutral" title=".version" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="exitcode.html" class="btn btn-neutral" title="Exit Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

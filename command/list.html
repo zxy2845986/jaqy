@@ -40,7 +40,7 @@
     <link rel="top" title="Jaqy 1.0 documentation" href="../index.html"/>
         <link rel="up" title="Commands" href="../command.html"/>
         <link rel="next" title=".load" href="load.html"/>
-        <link rel="prev" title=".info" href="info.html"/> 
+        <link rel="prev" title=".limit" href="limit.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -126,6 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="importschema.html">.importschema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="importtable.html">.importtable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html">.info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="limit.html">.limit</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">.list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="load.html">.load</a></li>
 <li class="toctree-l2"><a class="reference internal" href="open.html">.open</a></li>
@@ -140,11 +141,13 @@
 <li class="toctree-l2"><a class="reference internal" href="run.html">.run</a></li>
 <li class="toctree-l2"><a class="reference internal" href="script.html">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">.sort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unalias.html">.unalias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="var.html">.var</a></li>
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../json.html">JSON Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Writing Plugins</a></li>
 </ul>
@@ -218,20 +221,20 @@
 <h1>.list<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">.list</span></code> command list catalogs, schemas, and tables in the database.</p>
 <p>Not all databases have catalogs or schema.  And if they do, they may be under
-different terms.  Use the following command to find out the given database&#8217;s
+different terms.  Use the following command to find out the given database’s
 behavior.</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>.info behavior
+<div class="highlight-text"><div class="highlight"><pre>.info behavior
 </pre></div>
 </div>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre><span></span>usage: .list [catalog] [schema] [table]
+<div class="highlight-text"><div class="highlight"><pre>usage: .list [catalog] [schema] [table]
 </pre></div>
 </div>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre><span></span>-- List tables in the current catalog
+<div class="highlight-text"><div class="highlight"><pre>-- List tables in the current catalog
 .list
 -- List all the catalogs
 .list %
@@ -259,7 +262,7 @@ behavior.</p>
         <a href="load.html" class="btn btn-neutral float-right" title=".load" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="info.html" class="btn btn-neutral" title=".info" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="limit.html" class="btn btn-neutral" title=".limit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

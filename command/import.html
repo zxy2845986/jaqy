@@ -126,6 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="importschema.html">.importschema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="importtable.html">.importtable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html">.info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="limit.html">.limit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list.html">.list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="load.html">.load</a></li>
 <li class="toctree-l2"><a class="reference internal" href="open.html">.open</a></li>
@@ -140,11 +141,13 @@
 <li class="toctree-l2"><a class="reference internal" href="run.html">.run</a></li>
 <li class="toctree-l2"><a class="reference internal" href="script.html">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">.sort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unalias.html">.unalias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="var.html">.var</a></li>
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../json.html">JSON Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Writing Plugins</a></li>
 </ul>
@@ -219,7 +222,7 @@
 <p>This command loads data into the database.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre><span></span>usage: .import [type] [type options] [file]
+<div class="highlight-text"><div class="highlight"><pre>usage: .import [type] [type options] [file]
 type:
   avro
   csv
@@ -261,7 +264,7 @@ based loading, JSON only supports name based loading.</p>
 <p>There are two possible ways of loading data.  One is position based, and the
 other is name based.</p>
 <p>Let us use the following CSV as an example.</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>Name,Value
+<div class="highlight-text"><div class="highlight"><pre>Name,Value
 1,2
 </pre></div>
 </div>
@@ -271,7 +274,7 @@ other is name based.</p>
 positions.</p>
 <p>So for the following example, the first <code class="docutils literal"><span class="pre">?</span></code> corresponds to column <code class="docutils literal"><span class="pre">Name</span></code>
 in the CSV file, and the second <code class="docutils literal"><span class="pre">?</span></code> corresponds to column <code class="docutils literal"><span class="pre">Value</span></code>.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">MyTable</span> <span class="p">(</span><span class="n">a</span> <span class="nb">INTEGER</span><span class="p">,</span> <span class="n">b</span> <span class="nb">INTEGER</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">MyTable</span> <span class="p">(</span><span class="n">a</span> <span class="nb">INTEGER</span><span class="p">,</span> <span class="n">b</span> <span class="nb">INTEGER</span><span class="p">);</span>
 <span class="p">.</span><span class="n">import</span> <span class="n">csv</span> <span class="o">-</span><span class="n">h</span> <span class="k">on</span> <span class="n">lib</span><span class="o">/</span><span class="n">import1</span><span class="p">.</span><span class="n">csv</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">MyTable</span> <span class="k">VALUES</span> <span class="p">(</span><span class="o">?</span><span class="p">,</span> <span class="o">?</span><span class="p">);</span>
 
@@ -288,7 +291,7 @@ in the CSV file, and the second <code class="docutils literal"><span class="pre"
 <h3>Name Based Loading<a class="headerlink" href="#name-based-loading" title="Permalink to this headline">¶</a></h3>
 <p>With name based loading, source field name is put inside <code class="docutils literal"><span class="pre">{{</span></code> and <code class="docutils literal"><span class="pre">}}</span></code>
 to specify the source field name.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span>.import csv -h on lib/import1.csv
+<div class="highlight-sql"><div class="highlight"><pre>.import csv -h on lib/import1.csv
 INSERT INTO MyTable VALUES ({{Name}}, {{Value}});
 
 -- Check the data
@@ -315,12 +318,12 @@ are the following, which
 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html">pandas.read_csv</a>
 uses.</p>
 <blockquote>
-<div>&#8220;-1.#IND&#8221;, &#8220;1.#QNAN&#8221;, &#8220;1.#IND&#8221;, &#8220;-1.#QNAN&#8221;, &#8220;#N/A N/A&#8221;, &#8220;#N/A&#8221;, &#8220;N/A&#8221;, &#8220;NA&#8221;, &#8220;#NA&#8221;, &#8220;NULL&#8221;, &#8220;NaN&#8221;, &#8220;-NaN&#8221;, &#8220;nan&#8221;, &#8220;-nan&#8221;, &#8220;&#8221;</div></blockquote>
+<div>“-1.#IND”, “1.#QNAN”, “1.#IND”, “-1.#QNAN”, “#N/A N/A”, “#N/A”, “N/A”, “NA”, “#NA”, “NULL”, “NaN”, “-NaN”, “nan”, “-nan”, “”</div></blockquote>
 </div>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span></span>-- Loading data using field position
+<div class="highlight-sql"><div class="highlight"><pre>-- Loading data using field position
 .import csv -h on lib/import1.csv
 INSERT INTO MyTable VALUES (?, ?);
 

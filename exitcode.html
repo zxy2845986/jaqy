@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Download &mdash; Jaqy 1.0 documentation</title>
+  <title>Exit Code &mdash; Jaqy 1.0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Jaqy 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Getting Started" href="start.html"/>
-        <link rel="prev" title="Copyright / License" href="license.html"/> 
+        <link rel="next" title="JSON Configuration" href="json.html"/>
+        <link rel="prev" title=".version" href="command/version.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -93,19 +93,15 @@
             
             
               <p class="caption"><span class="caption-text">Documentation</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="license.html">Copyright / License</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Download</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#build-requirement">Build Requirement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#making-the-build">Making the Build</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">Download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
 </ul>
 <p class="caption"><span class="caption-text">References</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="command.html">Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exitcode.html">Exit Code</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="json.html">JSON Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugin.html">Writing Plugins</a></li>
 </ul>
@@ -156,7 +152,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Download</li>
+      <li>Exit Code</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -173,41 +169,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="download">
-<span id="id1"></span><h1>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h1>
-<p>Jaqy is still under development for adding a few remaining features,
-thus there is no formal releases.  However, it is already very much usable
-with a lot of features.   You can download and make a build yourself using
-the following instructions.</p>
-<div class="section" id="build-requirement">
-<h2>Build Requirement<a class="headerlink" href="#build-requirement" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="https://git-scm.com/">git</a></li>
-<li><a class="reference external" href="http://maven.apache.org/">maven</a></li>
-<li><a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK 8</a>
-or <a class="reference external" href="http://openjdk.java.net/install/">OpenJDK 8</a></li>
-</ul>
-<p>On Ubuntu 16.04 LTS, the build environment can be simply setup with the following
-command.</p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y git maven openjdk-8-jdk
-</pre></div>
-</div>
-</div>
-<div class="section" id="making-the-build">
-<h2>Making the Build<a class="headerlink" href="#making-the-build" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/Teradata/jaqy.git
-<span class="nb">cd</span> jaqy
-mvn clean package -Dmaven.test.skip<span class="o">=</span><span class="nb">true</span>
-</pre></div>
-</div>
-<p>There are two jars built.</p>
-<div class="highlight-bash"><div class="highlight"><pre>dist/jaqy-1.0.jar
-jaqy-avro/target/jaqy-avro-1.0.jar
-</pre></div>
-</div>
-<p><code class="docutils literal"><span class="pre">jaqy-1.0.jar</span></code> is the standalone package.  <code class="docutils literal"><span class="pre">jaqy-avro-1.0.jar</span></code> is a separate
-addon for AVRO import / export format.</p>
-</div>
+  <div class="section" id="exit-code">
+<h1>Exit Code<a class="headerlink" href="#exit-code" title="Permalink to this headline">¶</a></h1>
+<p>If <a class="reference external" href="command/exit.html">.exit</a> command is run without specifying an exit
+code, one of the following exit code is generated.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>Indicates no errors.</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>Indicates command line option error.</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>Indicates having Jaqy command errors.</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>Indicates having SQL exceptions.</td>
+</tr>
+<tr class="row-even"><td>6</td>
+<td>Indicates having both Jaqy command errors and SQL exceptions.</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -220,10 +213,10 @@ addon for AVRO import / export format.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="start.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="json.html" class="btn btn-neutral float-right" title="JSON Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="license.html" class="btn btn-neutral" title="Copyright / License" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="command/version.html" class="btn btn-neutral" title=".version" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

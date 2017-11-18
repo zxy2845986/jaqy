@@ -126,6 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="importschema.html">.importschema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="importtable.html">.importtable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html">.info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="limit.html">.limit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list.html">.list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="load.html">.load</a></li>
 <li class="toctree-l2"><a class="reference internal" href="open.html">.open</a></li>
@@ -140,11 +141,13 @@
 <li class="toctree-l2"><a class="reference internal" href="run.html">.run</a></li>
 <li class="toctree-l2"><a class="reference internal" href="script.html">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">.sort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unalias.html">.unalias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="var.html">.var</a></li>
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../json.html">JSON Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Writing Plugins</a></li>
 </ul>
@@ -222,13 +225,13 @@
 completed.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre><span></span>usage: .os [shell commands]
+<div class="highlight-text"><div class="highlight"><pre>usage: .os [shell commands]
 </pre></div>
 </div>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="p">.</span><span class="n">os</span> <span class="n">echo</span> <span class="n">asdf</span> <span class="o">&amp;&amp;</span> <span class="n">echo</span> <span class="n">ddd</span> <span class="o">&gt;</span> <span class="n">dummy</span><span class="p">.</span><span class="n">txt</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">.</span><span class="n">os</span> <span class="n">echo</span> <span class="n">asdf</span> <span class="o">&amp;&amp;</span> <span class="n">echo</span> <span class="n">ddd</span> <span class="o">&gt;</span> <span class="n">dummy</span><span class="p">.</span><span class="n">txt</span>
 <span class="n">asdf</span>
 <span class="c1">-- 0/4 - 0 ------------------------------------------</span>
 <span class="p">.</span><span class="n">os</span> <span class="n">cat</span> <span class="n">dummy</span><span class="p">.</span><span class="n">txt</span>

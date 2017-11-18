@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>.autocommit &mdash; Jaqy 1.0 documentation</title>
+  <title>.limit &mdash; Jaqy 1.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Jaqy 1.0 documentation" href="../index.html"/>
         <link rel="up" title="Commands" href="../command.html"/>
-        <link rel="next" title=".batchsize" href="batchsize.html"/>
-        <link rel="prev" title=".alias" href="alias.html"/> 
+        <link rel="next" title=".list" href="list.html"/>
+        <link rel="prev" title=".info" href="info.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -105,7 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../command_overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_repeatprev.html">.#</a></li>
 <li class="toctree-l2"><a class="reference internal" href="alias.html">.alias</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">.autocommit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autocommit.html">.autocommit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batchsize.html">.batchsize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classpath.html">.classpath</a></li>
 <li class="toctree-l2"><a class="reference internal" href="close.html">.close</a></li>
@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="importschema.html">.importschema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="importtable.html">.importtable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="info.html">.info</a></li>
-<li class="toctree-l2"><a class="reference internal" href="limit.html">.limit</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">.limit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list.html">.list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="load.html">.load</a></li>
 <li class="toctree-l2"><a class="reference internal" href="open.html">.open</a></li>
@@ -200,7 +200,7 @@
         
           <li><a href="../command.html">Commands</a> &raquo;</li>
         
-      <li>.autocommit</li>
+      <li>.limit</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -217,26 +217,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="autocommit">
-<h1>.autocommit<a class="headerlink" href="#autocommit" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">.autocommit</span></code> sets the autocommit property of the queries.</p>
+  <div class="section" id="limit">
+<h1>.limit<a class="headerlink" href="#limit" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">.limit</span></code> limits the output to a number of rows.</p>
+<p>The rows in the ResultSet after the limit is not read.  Thus, the activity
+count reported with <code class="docutils literal"><span class="pre">.limit</span></code> on may not be accurate.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre>usage: .autocommit [on | off]
+<div class="highlight-text"><div class="highlight"><pre>usage: .limit [number]
 </pre></div>
 </div>
-<p>Executing the command without arguments will display the autocommit setting
-for the current session.</p>
 </div>
-<div class="section" id="jdbc-call">
-<h2>JDBC Call<a class="headerlink" href="#jdbc-call" title="Permalink to this headline">¶</a></h2>
-<p>It corresponds to JDBC
-<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html">Connection</a>
-class’s
-<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html#getAutoCommit--">getAutoCommit()</a>
-and
-<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html#setAutoCommit-boolean-">setAutoCommit(boolean autoCommit)</a>
-functions.</p>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>-- Limit the output to 1 row
+.limit 1
+SELECT * FROM MyTable ORDER BY a;
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="sort.html">.sort</a></li>
+</ul>
 </div>
 </div>
 
@@ -250,10 +254,10 @@ functions.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="batchsize.html" class="btn btn-neutral float-right" title=".batchsize" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="list.html" class="btn btn-neutral float-right" title=".list" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="alias.html" class="btn btn-neutral" title=".alias" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="info.html" class="btn btn-neutral" title=".info" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

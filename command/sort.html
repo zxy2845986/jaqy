@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>.autocommit &mdash; Jaqy 1.0 documentation</title>
+  <title>.sort &mdash; Jaqy 1.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Jaqy 1.0 documentation" href="../index.html"/>
         <link rel="up" title="Commands" href="../command.html"/>
-        <link rel="next" title=".batchsize" href="batchsize.html"/>
-        <link rel="prev" title=".alias" href="alias.html"/> 
+        <link rel="next" title=".unalias" href="unalias.html"/>
+        <link rel="prev" title=".session" href="session.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -105,7 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../command_overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_repeatprev.html">.#</a></li>
 <li class="toctree-l2"><a class="reference internal" href="alias.html">.alias</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">.autocommit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autocommit.html">.autocommit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batchsize.html">.batchsize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classpath.html">.classpath</a></li>
 <li class="toctree-l2"><a class="reference internal" href="close.html">.close</a></li>
@@ -141,7 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="run.html">.run</a></li>
 <li class="toctree-l2"><a class="reference internal" href="script.html">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">.session</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sort.html">.sort</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">.sort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unalias.html">.unalias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="var.html">.var</a></li>
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
@@ -200,7 +200,7 @@
         
           <li><a href="../command.html">Commands</a> &raquo;</li>
         
-      <li>.autocommit</li>
+      <li>.sort</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -217,26 +217,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="autocommit">
-<h1>.autocommit<a class="headerlink" href="#autocommit" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">.autocommit</span></code> sets the autocommit property of the queries.</p>
+  <div class="section" id="sort">
+<h1>.sort<a class="headerlink" href="#sort" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">.sort</span></code> does client side ResultSet sorting.</p>
+<p>If <a class="reference external" href="limit.html">.limit</a> is used, then sorting is only applied to the rows
+retrieved, not all of the ResultSet.</p>
+<p>The sorting configuration is removed after the SQL query.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre>usage: .autocommit [on | off]
+<div class="highlight-text"><div class="highlight"><pre>usage: .sort [options]
+options:
+  -a,--ascending &lt;arg&gt;    ascending sort
+  -d,--descending &lt;arg&gt;   descending sort
+  -h,--high               null sorts high
+  -l,--low                null sorts low
 </pre></div>
 </div>
-<p>Executing the command without arguments will display the autocommit setting
-for the current session.</p>
 </div>
-<div class="section" id="jdbc-call">
-<h2>JDBC Call<a class="headerlink" href="#jdbc-call" title="Permalink to this headline">¶</a></h2>
-<p>It corresponds to JDBC
-<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html">Connection</a>
-class’s
-<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html#getAutoCommit--">getAutoCommit()</a>
-and
-<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html#setAutoCommit-boolean-">setAutoCommit(boolean autoCommit)</a>
-functions.</p>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>-- do descending sort on the 2nd column, then ascending sort on the 1st column
+.sort -d 2 -a 1
+SELECT * FROM MyTable ORDER BY a;
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="limit.html">.limit</a></li>
+</ul>
 </div>
 </div>
 
@@ -250,10 +260,10 @@ functions.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="batchsize.html" class="btn btn-neutral float-right" title=".batchsize" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="unalias.html" class="btn btn-neutral float-right" title=".unalias" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="alias.html" class="btn btn-neutral" title=".alias" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="session.html" class="btn btn-neutral" title=".session" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

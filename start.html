@@ -109,6 +109,7 @@
 <p class="caption"><span class="caption-text">References</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="command.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="json.html">JSON Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugin.html">Writing Plugins</a></li>
 </ul>
@@ -188,21 +189,21 @@ block comments <code class="docutils literal"><span class="pre">/*</span> <span 
 <h2>Launching Jaqy<a class="headerlink" href="#launching-jaqy" title="Permalink to this headline">¶</a></h2>
 <p>Once <a class="reference external" href="download.html">downloaded</a> <code class="docutils literal"><span class="pre">jaqy-1.0.jar</span></code>, it can be run using
 the following command.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>java -jar jaqy-1.0.jar
+<div class="highlight-bash"><div class="highlight"><pre>java -jar jaqy-1.0.jar
 </pre></div>
 </div>
 <p>If you need to load / export large amount of data though, it can be necessary
 to allocate a bit more memory.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>java -Xmx256m -jar jaqy-1.0.jar
+<div class="highlight-bash"><div class="highlight"><pre>java -Xmx256m -jar jaqy-1.0.jar
 </pre></div>
 </div>
 <p>If you are going to have Unicode outputs, it may be necessary to specify the
 encoding for the standard output.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>java -Dfile.encoding<span class="o">=</span>UTF-8 -Xmx256m -jar jaqy-1.0.jar
+<div class="highlight-bash"><div class="highlight"><pre>java -Dfile.encoding<span class="o">=</span>UTF-8 -Xmx256m -jar jaqy-1.0.jar
 </pre></div>
 </div>
 <p>It is recommended to have the above script in an alias</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">jq</span><span class="o">=</span><span class="s1">&#39;java -Dfile.encoding=UTF-8 -Xmx256m -jar jaqy-1.0.jar&#39;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">alias</span> <span class="nv">jq</span><span class="o">=</span><span class="s1">&#39;java -Dfile.encoding=UTF-8 -Xmx256m -jar jaqy-1.0.jar&#39;</span>
 </pre></div>
 </div>
 <p>or a batch file.</p>
@@ -210,7 +211,7 @@ encoding for the standard output.</p>
 <div class="section" id="opening-a-connection">
 <h2>Opening a Connection<a class="headerlink" href="#opening-a-connection" title="Permalink to this headline">¶</a></h2>
 <p>Here I use Teradata JDBC as an example.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="p">.</span><span class="n">protocol</span> <span class="n">teradata</span> <span class="n">com</span><span class="p">.</span><span class="n">teradata</span><span class="p">.</span><span class="n">jdbc</span><span class="p">.</span><span class="n">TeraDriver</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">.</span><span class="n">protocol</span> <span class="n">teradata</span> <span class="n">com</span><span class="p">.</span><span class="n">teradata</span><span class="p">.</span><span class="n">jdbc</span><span class="p">.</span><span class="n">TeraDriver</span>
 <span class="p">.</span><span class="n">classpath</span> <span class="n">teradata</span> <span class="n">lib</span><span class="o">/</span><span class="n">tdgssconfig</span><span class="p">.</span><span class="n">jar</span><span class="p">:</span><span class="n">lib</span><span class="o">/</span><span class="n">terajdbc4</span><span class="p">.</span><span class="n">jar</span>
 <span class="p">.</span><span class="k">open</span> <span class="o">-</span><span class="n">u</span> <span class="n">dbc</span> <span class="o">-</span><span class="n">p</span> <span class="n">dbc</span> <span class="n">teradata</span><span class="p">:</span><span class="o">//</span><span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
 </pre></div>
@@ -235,7 +236,7 @@ prefix.</p>
 <h2>Exeuting a SQL Query<a class="headerlink" href="#exeuting-a-sql-query" title="Permalink to this headline">¶</a></h2>
 <p>Jaqy recognizes any text that are not started with <code class="docutils literal"><span class="pre">.</span></code> as SQL.  The SQL
 block is ended with a semicolon <code class="docutils literal"><span class="pre">;</span></code> as the last character on a line.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span>
 <span class="k">FROM</span> <span class="n">MyTable</span>
 <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">a</span><span class="p">;</span>
 </pre></div>
@@ -243,20 +244,20 @@ block is ended with a semicolon <code class="docutils literal"><span class="pre"
 <p>It is possible to enter chain multiple queries in a single statement or enter
 a slightly complex statement by avoiding having the first <code class="docutils literal"><span class="pre">;</span></code> as the last
 character on a line.  Here are two examples.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">MACRO</span> <span class="n">myquery</span> <span class="k">AS</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="n">MACRO</span> <span class="n">myquery</span> <span class="k">AS</span>
 <span class="p">(</span>
         <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">MyTable</span>
         <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">a</span>
 <span class="p">;);</span>
 </pre></div>
 </div>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">MyTable</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">a</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">MyTable</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">a</span>
 <span class="p">;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">MyTable</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">a</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>To enter even more complex SQL as a single statement, as in the case of
 a stored procedure, one can use <code class="docutils literal"><span class="pre">.exec</span></code> to do so.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="p">.</span><span class="k">exec</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">.</span><span class="k">exec</span>
 <span class="k">CREATE</span> <span class="n">MACRO</span> <span class="n">myquery</span> <span class="k">AS</span>
 <span class="p">(</span>
         <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">MyTable</span>
@@ -266,7 +267,7 @@ a stored procedure, one can use <code class="docutils literal"><span class="pre"
 </pre></div>
 </div>
 <p>Or simply use <code class="docutils literal"><span class="pre">.exec</span></code> to execute an external SQL file.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="p">.</span><span class="k">exec</span> <span class="n">mysp</span><span class="p">.</span><span class="k">sql</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">.</span><span class="k">exec</span> <span class="n">mysp</span><span class="p">.</span><span class="k">sql</span>
 </pre></div>
 </div>
 </div>
@@ -283,7 +284,7 @@ a stored procedure, one can use <code class="docutils literal"><span class="pre"
 <h2>Running a Jaqy Script<a class="headerlink" href="#running-a-jaqy-script" title="Permalink to this headline">¶</a></h2>
 <p>You can enter commands or SQL interactively, or use put everything in a script
 and pipe in the input.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="p">.</span><span class="k">open</span> <span class="o">-</span><span class="n">u</span> <span class="n">dbc</span> <span class="o">-</span><span class="n">p</span> <span class="n">dbc</span> <span class="n">teradata</span><span class="p">:</span><span class="o">//</span><span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">.</span><span class="k">open</span> <span class="o">-</span><span class="n">u</span> <span class="n">dbc</span> <span class="o">-</span><span class="n">p</span> <span class="n">dbc</span> <span class="n">teradata</span><span class="p">:</span><span class="o">//</span><span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
 
 <span class="cm">/* switch to test database */</span>
 <span class="k">DATABASE</span> <span class="n">test</span><span class="p">;</span>
@@ -314,7 +315,7 @@ and pipe in the input.</p>
 <span class="p">.</span><span class="n">quit</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>jq &lt; input.sql
+<div class="highlight-bash"><div class="highlight"><pre>jq &lt; input.sql
 </pre></div>
 </div>
 <p>The output of a script is generally to the standard output.  However, some

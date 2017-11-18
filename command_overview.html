@@ -126,6 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="command/importschema.html">.importschema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/importtable.html">.importtable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/info.html">.info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/limit.html">.limit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/list.html">.list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/load.html">.load</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/open.html">.open</a></li>
@@ -140,11 +141,13 @@
 <li class="toctree-l2"><a class="reference internal" href="command/run.html">.run</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/script.html">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/session.html">.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/sort.html">.sort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/unalias.html">.unalias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/var.html">.var</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/version.html">.version</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="json.html">JSON Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugin.html">Writing Plugins</a></li>
 </ul>
@@ -218,11 +221,11 @@
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
 <p>For a list of currently installed commands, simply run the following command
 to list them.</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>.help
+<div class="highlight-text"><div class="highlight"><pre>.help
 </pre></div>
 </div>
 <p>To get more detailed information on a command, just do a help on the command.</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>.help command
+<div class="highlight-text"><div class="highlight"><pre>.help command
 </pre></div>
 </div>
 <div class="section" id="hiding-a-command">
@@ -230,7 +233,7 @@ to list them.</p>
 <p>It is possible to hide the execution of a command in a script, by using <code class="docutils literal"><span class="pre">.&#64;</span></code>
 prefix.  For example, the following command can be used to hide the actual
 user, password, and the database URL in the output.</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>.@open -u root mysql://localhost/vagrant
+<div class="highlight-text"><div class="highlight"><pre>.@open -u root mysql://localhost/vagrant
 </pre></div>
 </div>
 <p>It should be noted that by default, commands in <code class="docutils literal"><span class="pre">~/.jqrc</span></code> is not echoed.
