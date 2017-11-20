@@ -103,8 +103,8 @@
 <li class="toctree-l1"><a class="reference internal" href="command.html">Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exitcode.html">Exit Code</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">JSON Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#default-configuration">Default Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#field-description">Field Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="plugin.html">Writing Plugins</a></li>
@@ -175,19 +175,27 @@
             
   <div class="section" id="json-configuration">
 <h1>JSON Configuration<a class="headerlink" href="#json-configuration" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="command/config.html">.config</a> command is used to configure a database
+using JSON configuration.  It should be noted that such configuration should
+only be applied before connecting to the database.</p>
+<div class="section" id="default-configuration">
+<h2>Default Configuration<a class="headerlink" href="#default-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The default configuration can be seen at
+<a class="reference external" href="https://github.com/Teradata/jaqy/blob/master/jaqy-console/src/main/resources/com/teradata/jaqy/initrc">initrc</a>
+.</p>
+</div>
 <div class="section" id="field-description">
 <h2>Field Description<a class="headerlink" href="#field-description" title="Permalink to this headline">¶</a></h2>
-<p>It is possible to extends Jaqy using JSON.</p>
 <p><code class="docutils literal"><span class="pre">protocol</span></code> indicates which protocol is being configured.</p>
+<p><code class="docutils literal"><span class="pre">catalogSQL</span></code> is used by <a class="reference external" href="command.html#pwd">.pwd</a> and
+<a class="reference external" href="command.html#list">.list</a> commands to determine the current catalog.</p>
 <p><code class="docutils literal"><span class="pre">features</span></code> list the functionalities that a given database does not support.</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">&quot;schema&quot;</span> <span class="pre">:</span> <span class="pre">false</span></code> if the database does not support schema.</li>
 <li><code class="docutils literal"><span class="pre">&quot;catalog&quot;</span> <span class="pre">:</span> <span class="pre">false</span></code> if the database does not support catalog.</li>
 </ul>
-<p><code class="docutils literal"><span class="pre">catalogSQL</span></code> is used by <a class="reference external" href="command.html#pwd">.pwd</a> and
-<a class="reference external" href="command.html#list">.list</a> commands to determine the current catalog.</p>
-<p><code class="docutils literal"><span class="pre">schemaSQL</span></code> is used by <a class="reference external" href="command.html#pwd">.pwd</a> and
-<a class="reference external" href="command.html#list">.list</a> commands to determine the current schema.</p>
+<p><code class="docutils literal"><span class="pre">schemaSQL</span></code> is used by <a class="reference external" href="command/pwd.html">.pwd</a> and
+<a class="reference external" href="command/list.html">.list</a> commands to determine the current schema.</p>
 <p><code class="docutils literal"><span class="pre">tableColumnSQL</span></code> is used by <a class="reference external" href="command.html#desc">.desc</a> command to list
 the columns in a table.  Jaqy uses
 <a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html">MessageFormat</a>
@@ -196,44 +204,16 @@ to construct the SQL query.</p>
 the table schema in SQL.  Jaqy uses
 <a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html">MessageFormat</a>
 to construct the SQL query.</p>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>MySQL configuration</p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-        <span class="nt">&quot;protocol&quot;</span><span class="p">:</span>     <span class="s2">&quot;mysql&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;features&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;schema&quot;</span> <span class="p">:</span> <span class="kc">false</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;catalogSQL&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;sql&quot;</span> <span class="p">:</span> <span class="s2">&quot;SELECT DATABASE()&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;field&quot;</span> <span class="p">:</span> <span class="mi">1</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;tableSchemaSQL&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;sql&quot;</span> <span class="p">:</span> <span class="s2">&quot;SHOW CREATE TABLE {0}&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;field&quot;</span> <span class="p">:</span> <span class="mi">2</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;tableColumnSQL&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;sql&quot;</span> <span class="p">:</span> <span class="s2">&quot;DESCRIBE {0}&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;field&quot;</span> <span class="p">:</span> <span class="mi">1</span>
-        <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>SQLite configuration</p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
-        <span class="nt">&quot;protocol&quot;</span><span class="p">:</span>     <span class="s2">&quot;sqlite&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;tableSchemaSQL&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;sql&quot;</span> <span class="p">:</span> <span class="s2">&quot;SELECT sql FROM SQLITE_MASTER WHERE NAME = &#39;&#39;{0}&#39;&#39;  COLLATE NOCASE&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;field&quot;</span> <span class="p">:</span> <span class="mi">1</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;tableColumnSQL&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;sql&quot;</span> <span class="p">:</span> <span class="s2">&quot;PRAGMA table_info([{0}])&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;field&quot;</span> <span class="p">:</span> <span class="mi">1</span>
-        <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<p><code class="docutils literal"><span class="pre">typeMap</span></code> sets up certain type information for properly inferring the type
+information.  JDBC’s
+<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/sql/DatabaseMetaData.html#getTypeInfo--">DatabaseMetadata.getTypeInfo()</a>.
+has a number of limitations that makes it difficult to use.  Usually only types
+such as <code class="docutils literal"><span class="pre">VARCHAR(1000)</span></code> with variable length information needs to be
+specified.  Jaqy uses
+<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html">MessageFormat</a>
+to construct the type name, with precision and scale passed to it.</p>
+<p>Occasionally, for databases with multiple types for the same type identifier,
+the most common one to use may be specified here as well.</p>
 </div>
 </div>
 

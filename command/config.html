@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>.exit &mdash; Jaqy 1.0 documentation</title>
+  <title>.config &mdash; Jaqy 1.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Jaqy 1.0 documentation" href="../index.html"/>
         <link rel="up" title="Commands" href="../command.html"/>
-        <link rel="next" title=".export" href="export.html"/>
-        <link rel="prev" title=".exec" href="exec.html"/> 
+        <link rel="next" title=".debug" href="debug.html"/>
+        <link rel="prev" title=".commit" href="commit.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -110,7 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="classpath.html">.classpath</a></li>
 <li class="toctree-l2"><a class="reference internal" href="close.html">.close</a></li>
 <li class="toctree-l2"><a class="reference internal" href="commit.html">.commit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">.config</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">.config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debug.html">.debug</a></li>
 <li class="toctree-l2"><a class="reference internal" href="desc.html">.desc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="driver.html">.driver</a></li>
@@ -118,7 +118,7 @@
 <li class="toctree-l2"><a class="reference internal" href="end.html">.end</a></li>
 <li class="toctree-l2"><a class="reference internal" href="env.html">.env</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exec.html">.exec</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">.exit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exit.html">.exit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="export.html">.export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="format.html">.format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="help.html">.help</a></li>
@@ -201,7 +201,7 @@
         
           <li><a href="../command.html">Commands</a> &raquo;</li>
         
-      <li>.exit</li>
+      <li>.config</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -218,18 +218,91 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="exit">
-<h1>.exit<a class="headerlink" href="#exit" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">.exit</span></code> exits Jaqy.</p>
-<p>By default, <code class="docutils literal"><span class="pre">.quit</span></code> is aliased to <code class="docutils literal"><span class="pre">.exit</span></code>.  So both can work.</p>
-<div class="section" id="syntax">
-<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre>usage: .exit [exit code]
+  <div class="section" id="config">
+<h1>.config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">.config</span></code> configures database handlings using JSON.  For more information
+on the format, see <a class="reference external" href="../json.html">JSON Configuration</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">JSON configuration does not apply to the current active connection.</p>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>.config
+[
+{
+        &quot;protocol&quot;:     &quot;mysql&quot;,
+        &quot;features&quot;: {
+                &quot;schema&quot; : false
+        },
+        &quot;catalogSQL&quot;: {
+                &quot;sql&quot; : &quot;SELECT DATABASE()&quot;,
+                &quot;field&quot; : 1
+        },
+        &quot;tableSchemaSQL&quot;: {
+                &quot;sql&quot; : &quot;SHOW CREATE TABLE {0}&quot;,
+                &quot;field&quot; : 2
+        },
+        &quot;tableColumnSQL&quot;: {
+                &quot;sql&quot; : &quot;DESCRIBE {0}&quot;,
+                &quot;field&quot; : 1
+        }
+},
+{
+        &quot;protocol&quot;:     &quot;sqlite&quot;,
+        &quot;tableSchemaSQL&quot;: {
+                &quot;sql&quot; : &quot;SELECT sql FROM SQLITE_MASTER WHERE NAME = &#39;&#39;{0}&#39;&#39; COLLATE NOCASE&quot;,
+                &quot;field&quot; : 1
+        },
+        &quot;tableColumnSQL&quot;: {
+                &quot;sql&quot; : &quot;PRAGMA table_info([{0}])&quot;,
+                &quot;field&quot; : 1
+        }
+},
+{
+        &quot;protocol&quot;:     &quot;derby&quot;,
+        &quot;typeMap&quot;: [
+                { &quot;name&quot; : &quot;CHAR ({0}) FOR BIT DATA&quot;, &quot;type&quot; : -2, &quot;maxPrecision&quot; : 254 },
+                { &quot;name&quot; : &quot;VARCHAR ({0}) FOR BIT DATA&quot;, &quot;type&quot; : -3, &quot;maxPrecision&quot; : 32672 },
+                { &quot;name&quot; : &quot;LONG VARCHAR FOR BIT DATA&quot;, &quot;type&quot; : 1, &quot;maxPrecision&quot; : 32700 }
+        ]
+},
+{
+        &quot;protocol&quot;:     &quot;teradata&quot;,
+        &quot;typeMap&quot;: [
+                { &quot;name&quot; : &quot;CHAR({0}) CHARACTER SET LATIN&quot;, &quot;type&quot; : 1, &quot;maxPrecision&quot; : 64000 },
+                { &quot;name&quot; : &quot;VARCHAR({0}) CHARACTER SET LATIN&quot;, &quot;type&quot; : 12, &quot;maxPrecision&quot; : 64000 },
+                { &quot;name&quot; : &quot;CLOB({0}) CHARACTER SET LATIN&quot;, &quot;type&quot; : 2005, &quot;maxPrecision&quot; : 2097088000 },
+                { &quot;name&quot; : &quot;CHAR({0}) CHARACTER SET UNICODE&quot;, &quot;type&quot; : 1, &quot;maxPrecision&quot; : 32000 },
+                { &quot;name&quot; : &quot;VARCHAR({0}) CHARACTER SET UNICODE&quot;, &quot;type&quot; : -9, &quot;maxPrecision&quot; : 32000 },
+                { &quot;name&quot; : &quot;CLOB({0}) CHARACTER SET UNICODE&quot;, &quot;type&quot; : 2011, &quot;maxPrecision&quot; : 1048544000 }
+        ],
+        &quot;features&quot;: {
+                &quot;catalog&quot; : false
+        },
+        &quot;schemaSQL&quot;: {
+                &quot;sql&quot; : &quot;SELECT DATABASE&quot;,
+                &quot;field&quot; : 1
+        },
+        &quot;tableSchemaSQL&quot;: {
+                &quot;sql&quot; : &quot;SHOW TABLE {0}&quot;,
+                &quot;field&quot; : 1
+        },
+        &quot;tableColumnSQL&quot;: {
+                &quot;sql&quot; : &quot;HELP TABLE {0}&quot;,
+                &quot;field&quot; : 1
+        }
+}
+]
+.end config
 </pre></div>
 </div>
-<p>The exit code is optional.  If it is not specified, it is generated based on
-the errors encountered.  See <a class="reference external" href="../exitcode.html">Exit Code</a> for more
-information.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="../json.html">JSON Configuration</a></li>
+</ul>
 </div>
 </div>
 
@@ -243,10 +316,10 @@ information.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="export.html" class="btn btn-neutral float-right" title=".export" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="debug.html" class="btn btn-neutral float-right" title=".debug" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="exec.html" class="btn btn-neutral" title=".exec" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="commit.html" class="btn btn-neutral" title=".commit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
