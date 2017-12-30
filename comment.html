@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configurations &mdash; Jaqy 1.0 documentation</title>
+  <title>Comments &mdash; Jaqy 1.0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Jaqy 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Database Configurations" href="config/database.html"/>
-        <link rel="prev" title="Comments" href="comment.html"/> 
+        <link rel="next" title="Configurations" href="config.html"/>
+        <link rel="prev" title=".version" href="command/version.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -101,12 +101,11 @@
 <p class="caption"><span class="caption-text">Manual</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="command.html">Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="comment.html">Comments</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Configurations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config/database.html">Database Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/handler.html">Handler Configurations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Comments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format.html">Display Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="export.html">Export Formats</a></li>
@@ -161,7 +160,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Configurations</li>
+      <li>Comments</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -178,15 +177,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="configurations">
-<h1>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h1>
-<p>Besides writing your own Jaqy plugin, a simpler approach to configure the
-behavior of Jaqy is to use JSON or JavaScript.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="config/database.html">Database Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config/handler.html">Handler Configurations</a></li>
+  <div class="section" id="comments">
+<h1>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h1>
+<p>Jaqy recognizes two types of comments.</p>
+<ul class="simple">
+<li>Line comments on a line started with <code class="docutils literal"><span class="pre">--</span></code>.  It should be noted that if
+<code class="docutils literal"><span class="pre">--</span></code> is not at the beginning of the line, then it would not be recognized.</li>
+<li>Block comments enclosed by <a class="reference external" href="command/rem.html">.rem</a> command and
+<code class="docutils literal"><span class="pre">.end</span> <span class="pre">rem</span></code>.</li>
 </ul>
+<p>Note that <code class="docutils literal"><span class="pre">/*</span> <span class="pre">*/</span></code> style block comment is not recognized by Jaqy.</p>
+<p>When Jaqy recognizes block of text as comment, it is ignored without
+transmitting the text to the database server.  Otherwise, if the text
+does not start with <code class="docutils literal"><span class="pre">.</span></code>, then it is considered as part of SQL statement,
+and would be transmitted to the database server.</p>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="c1">-- a Jaqy line comment</span>
+
+<span class="c1">-- The following two lines are executed together.</span>
+<span class="k">SELECT</span> <span class="mi">1234</span><span class="p">;</span> <span class="c1">-------- Not recognized as Jaqy line comment</span>
+<span class="k">SELECT</span> <span class="mi">1234</span><span class="p">;</span>
+
+<span class="p">.</span><span class="n">rem</span> <span class="n">a</span> <span class="n">Jaqy</span> <span class="n">block</span> <span class="k">comment</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="mi">1234</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="mi">1234</span><span class="p">;</span>
+<span class="p">.</span><span class="k">end</span> <span class="n">rem</span>
+
+<span class="cm">/* This is not recognized as a Jaqy block comment.  It is transmitted</span>
+<span class="cm">   with the following SQL statement to the database server. */</span>
+<span class="k">SELECT</span> <span class="mi">1234</span><span class="p">;</span>
+
+<span class="cm">/* You will see error messages since `;` at EOL indicates the end of a SQL</span>
+<span class="cm">   statement.</span>
+
+<span class="cm">SELECT * FROM MyTable;</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -200,10 +228,10 @@ behavior of Jaqy is to use JSON or JavaScript.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="config/database.html" class="btn btn-neutral float-right" title="Database Configurations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="config.html" class="btn btn-neutral float-right" title="Configurations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="comment.html" class="btn btn-neutral" title="Comments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="command/version.html" class="btn btn-neutral" title=".version" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

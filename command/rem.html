@@ -99,7 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../download.html">Download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../start.html">Getting Started</a></li>
 </ul>
-<p class="caption"><span class="caption-text">References</span></p>
+<p class="caption"><span class="caption-text">Manual</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../command.html">Commands</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../command_overview.html">Overview</a></li>
@@ -149,6 +149,7 @@
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../comment.html">Comments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../config.html">Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../format.html">Display Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
@@ -225,8 +226,23 @@
             
   <div class="section" id="rem">
 <h1>.rem<a class="headerlink" href="#rem" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">.rem</span></code> (remark) does nothing</p>
-<p>This command is mainly served as a line comment much like DOS’s REM command.</p>
+<p><code class="docutils literal"><span class="pre">.rem</span></code> (remark) does block comment.</p>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">.</span><span class="n">rem</span> <span class="k">nothing</span> <span class="n">gets</span> <span class="n">executed</span>
+<span class="k">SELECT</span> <span class="mi">1234</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="mi">1234</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="mi">1234</span><span class="p">;</span>
+<span class="p">.</span><span class="k">end</span> <span class="n">rem</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="../comment.html">Comments</a></li>
+</ul>
+</div>
 </div>
 
 
