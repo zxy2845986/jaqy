@@ -121,6 +121,7 @@
 <li class="toctree-l2"><a class="reference internal" href="exit.html">.exit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="export.html">.export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="format.html">.format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler.html">.handler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="help.html">.help</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">.if</a></li>
 <li class="toctree-l2"><a class="reference internal" href="import.html">.import</a></li>
@@ -148,9 +149,13 @@
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../config.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../format.html">Display Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../json.html">JSON Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../plugin.html">Writing Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../export.html">Export Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../import.html">Import Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin.html">Plugin Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script.html">Scripting</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Miscellaneous</span></p>
 <ul>
@@ -220,8 +225,9 @@
             
   <div class="section" id="if">
 <h1>.if<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">.if</span></code> executes a block of jaqy script if and only if the expression
+<p><code class="docutils literal"><span class="pre">.if</span></code> executes a block of Jaqy script if and only if the expression
 condition is evaluated to true.</p>
+<p>The expression condition is evaluated using JavaScript.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-text"><div class="highlight"><pre>.if [expression]

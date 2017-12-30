@@ -109,9 +109,13 @@
 <p class="caption"><span class="caption-text">References</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="command.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format.html">Display Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exitcode.html">Exit Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="json.html">JSON Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plugin.html">Writing Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export.html">Export Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import.html">Import Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugin.html">Plugin Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script.html">Scripting</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Miscellaneous</span></p>
 <ul>
@@ -183,8 +187,11 @@
 language that mixes SQL with commands.</p>
 <p>A command is simply a name token with a dot prefix.  For instance, <code class="docutils literal"><span class="pre">.open</span></code>,
 <code class="docutils literal"><span class="pre">.close</span></code>, etc.</p>
-<p>Jaqy also supports both SQL line comments which starts with <code class="docutils literal"><span class="pre">--</span></code> and C style
-block comments <code class="docutils literal"><span class="pre">/*</span> <span class="pre">*/</span></code>.</p>
+<p>Jaqy also supports SQL line comments which starts with <code class="docutils literal"><span class="pre">--</span></code>.  It should be
+noted that Jaqy does not recognize comments <code class="docutils literal"><span class="pre">/*</span> <span class="pre">*/</span></code>.  Comments recognized
+by Jaqy is not sent to the database, but sometimes such behavior may not be
+wanted since it may be used to contain some metadata for logging purposes.
+Thus, <code class="docutils literal"><span class="pre">/*</span> <span class="pre">*/</span></code> is not recognized by Jaqy.</p>
 <div class="section" id="launching-jaqy">
 <h2>Launching Jaqy<a class="headerlink" href="#launching-jaqy" title="Permalink to this headline">¶</a></h2>
 <p>Once <a class="reference external" href="download.html">downloaded</a> <code class="docutils literal"><span class="pre">jaqy-1.0.jar</span></code>, it can be run using

@@ -121,6 +121,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">.exit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="export.html">.export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="format.html">.format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler.html">.handler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="help.html">.help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="if.html">.if</a></li>
 <li class="toctree-l2"><a class="reference internal" href="import.html">.import</a></li>
@@ -148,9 +149,13 @@
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../config.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../format.html">Display Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../json.html">JSON Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../plugin.html">Writing Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../export.html">Export Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../import.html">Import Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin.html">Plugin Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script.html">Scripting</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Miscellaneous</span></p>
 <ul>
@@ -222,6 +227,8 @@
 <h1>.exit<a class="headerlink" href="#exit" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">.exit</span></code> exits Jaqy.</p>
 <p>By default, <code class="docutils literal"><span class="pre">.quit</span></code> is aliased to <code class="docutils literal"><span class="pre">.exit</span></code>.  So both can work.</p>
+<p>When there are no more inputs for Jaqy, an exit command is called implicitly,
+so it is not necessary to explicitly call this command.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-text"><div class="highlight"><pre>usage: .exit [exit code]
@@ -230,6 +237,15 @@
 <p>The exit code is optional.  If it is not specified, it is generated based on
 the errors encountered.  See <a class="reference external" href="../exitcode.html">Exit Code</a> for more
 information.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">.exit</span></code> command does not actively attempt to close a session.  This
+behavior is     intentional.</p>
+<p class="last">It is to ensure to the script can be exited immediately, since sometimes
+closing a database connection may take a while due to the server status.
+One can always call <a class="reference external" href="close.html">.close</a> command before exiting
+the script to gracefully closing a database connection.</p>
+</div>
 </div>
 </div>
 

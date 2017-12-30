@@ -121,6 +121,7 @@
 <li class="toctree-l2"><a class="reference internal" href="exit.html">.exit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="export.html">.export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="format.html">.format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler.html">.handler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="help.html">.help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="if.html">.if</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">.import</a></li>
@@ -148,9 +149,13 @@
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../config.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../format.html">Display Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../json.html">JSON Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../plugin.html">Writing Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../export.html">Export Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../import.html">Import Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugin.html">Plugin Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script.html">Scripting</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Miscellaneous</span></p>
 <ul>
@@ -259,6 +264,7 @@ json type options:
 </div>
 <p>It should be noted that both CSV and AVRO supports field position and name
 based loading, JSON only supports name based loading.</p>
+<p>See <a class="reference external" href="../import.html">Import Formats</a> for more information.</p>
 </div>
 <div class="section" id="loading">
 <h2>Loading<a class="headerlink" href="#loading" title="Permalink to this headline">¶</a></h2>
@@ -308,18 +314,6 @@ A B
 <h3>Batch Loading<a class="headerlink" href="#batch-loading" title="Permalink to this headline">¶</a></h3>
 <p>Jaqy by default, uses batch loading which can improve the loading speed.
 See <a class="reference external" href="batchsize.html">.batchsize</a> for more information.</p>
-</div>
-<div class="section" id="null-and-n-a-handling">
-<h3>NULL and N/A Handling<a class="headerlink" href="#null-and-n-a-handling" title="Permalink to this headline">¶</a></h3>
-<p>Since JSON and AVRO have native NULL handling, the issue here is CSV.
-There are many possible ways to store NULL and N/A values in CSV.  CSV
-format provides a <code class="docutils literal"><span class="pre">--nafilter</span></code> and <code class="docutils literal"><span class="pre">--navalues</span></code> options to specify
-the list.  If <code class="docutils literal"><span class="pre">--nafilter</span></code> is specified, the default N/A value list
-are the following, which
-<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html">pandas.read_csv</a>
-uses.</p>
-<blockquote>
-<div>“-1.#IND”, “1.#QNAN”, “1.#IND”, “-1.#QNAN”, “#N/A N/A”, “#N/A”, “N/A”, “NA”, “#NA”, “NULL”, “NaN”, “-NaN”, “nan”, “-nan”, “”</div></blockquote>
 </div>
 </div>
 <div class="section" id="example">

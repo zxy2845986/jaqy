@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>JSON Configuration &mdash; Jaqy 1.0 documentation</title>
+  <title>Import Formats &mdash; Jaqy 1.0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Jaqy 1.0 documentation" href="index.html"/>
-        <link rel="next" title="Writing Plugins" href="plugin.html"/>
-        <link rel="prev" title="Exit Code" href="exitcode.html"/> 
+        <link rel="next" title="avro" href="import/avro.html"/>
+        <link rel="prev" title="json" href="export/json.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -101,13 +101,18 @@
 <p class="caption"><span class="caption-text">References</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="command.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format.html">Display Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exitcode.html">Exit Code</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">JSON Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#default-configuration">Default Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#field-description">Field Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export.html">Export Formats</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Import Formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="import/avro.html">avro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="import/csv.html">csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="import/json.html">json</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="plugin.html">Writing Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugin.html">Plugin Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="script.html">Scripting</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Miscellaneous</span></p>
 <ul>
@@ -156,7 +161,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>JSON Configuration</li>
+      <li>Import Formats</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -173,47 +178,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="json-configuration">
-<h1>JSON Configuration<a class="headerlink" href="#json-configuration" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="command/config.html">.config</a> command is used to configure a database
-using JSON configuration.  It should be noted that such configuration should
-only be applied before connecting to the database.</p>
-<div class="section" id="default-configuration">
-<h2>Default Configuration<a class="headerlink" href="#default-configuration" title="Permalink to this headline">¶</a></h2>
-<p>The default configuration can be seen at
-<a class="reference external" href="https://github.com/Teradata/jaqy/blob/master/jaqy-console/src/main/resources/com/teradata/jaqy/initrc">initrc</a>
-.</p>
-</div>
-<div class="section" id="field-description">
-<h2>Field Description<a class="headerlink" href="#field-description" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">protocol</span></code> indicates which protocol is being configured.</p>
-<p><code class="docutils literal"><span class="pre">catalogSQL</span></code> is used by <a class="reference external" href="command.html#pwd">.pwd</a> and
-<a class="reference external" href="command.html#list">.list</a> commands to determine the current catalog.</p>
-<p><code class="docutils literal"><span class="pre">features</span></code> list the functionalities that a given database does not support.</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">&quot;schema&quot;</span> <span class="pre">:</span> <span class="pre">false</span></code> if the database does not support schema.</li>
-<li><code class="docutils literal"><span class="pre">&quot;catalog&quot;</span> <span class="pre">:</span> <span class="pre">false</span></code> if the database does not support catalog.</li>
+  <div class="section" id="import-formats">
+<h1>Import Formats<a class="headerlink" href="#import-formats" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="command/import.html">.import</a> command is used to load data into the
+database.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="import/avro.html">avro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import/csv.html">csv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import/json.html">json</a></li>
 </ul>
-<p><code class="docutils literal"><span class="pre">schemaSQL</span></code> is used by <a class="reference external" href="command/pwd.html">.pwd</a> and
-<a class="reference external" href="command/list.html">.list</a> commands to determine the current schema.</p>
-<p><code class="docutils literal"><span class="pre">tableColumnSQL</span></code> is used by <a class="reference external" href="command.html#desc">.desc</a> command to list
-the columns in a table.  Jaqy uses
-<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html">MessageFormat</a>
-to construct the SQL query.</p>
-<p><code class="docutils literal"><span class="pre">tableSchemaSQL</span></code> is used by <a class="reference external" href="command.html#desc">.desc</a> command to show
-the table schema in SQL.  Jaqy uses
-<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html">MessageFormat</a>
-to construct the SQL query.</p>
-<p><code class="docutils literal"><span class="pre">typeMap</span></code> sets up certain type information for properly inferring the type
-information.  JDBC’s
-<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/sql/DatabaseMetaData.html#getTypeInfo--">DatabaseMetadata.getTypeInfo()</a>.
-has a number of limitations that makes it difficult to use.  Usually only types
-such as <code class="docutils literal"><span class="pre">VARCHAR(1000)</span></code> with variable length information needs to be
-specified.  Jaqy uses
-<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html">MessageFormat</a>
-to construct the type name, with precision and scale passed to it.</p>
-<p>Occasionally, for databases with multiple types for the same type identifier,
-the most common one to use may be specified here as well.</p>
 </div>
 </div>
 
@@ -227,10 +201,10 @@ the most common one to use may be specified here as well.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plugin.html" class="btn btn-neutral float-right" title="Writing Plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="import/avro.html" class="btn btn-neutral float-right" title="avro" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="exitcode.html" class="btn btn-neutral" title="Exit Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="export/json.html" class="btn btn-neutral" title="json" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
