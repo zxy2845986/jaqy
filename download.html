@@ -95,15 +95,12 @@
               <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="license.html">Copyright / License</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Download</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#build-requirement">Build Requirement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#making-the-build">Making the Build</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Manual</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Building Jaqy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="command.html">Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comment.html">Comments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configurations</a></li>
@@ -111,6 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="export.html">Export Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import.html">Import Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="largedataset.html">Large Data Set Handling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugin.html">Plugin Loading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="script.html">Scripting</a></li>
 </ul>
@@ -180,39 +178,10 @@
             
   <div class="section" id="download">
 <span id="id1"></span><h1>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h1>
-<p>Jaqy is still under development for adding a few remaining features,
-thus there is no formal releases.  However, it is already very much usable
-with a lot of features.   You can download and make a build yourself using
-the following instructions.</p>
-<div class="section" id="build-requirement">
-<h2>Build Requirement<a class="headerlink" href="#build-requirement" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="https://git-scm.com/">git</a></li>
-<li><a class="reference external" href="http://maven.apache.org/">maven</a></li>
-<li><a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK 8</a>
-or <a class="reference external" href="http://openjdk.java.net/install/">OpenJDK 8</a></li>
-</ul>
-<p>On Ubuntu 16.04 LTS, the build environment can be simply setup with the following
-command.</p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y git maven openjdk-8-jdk
-</pre></div>
-</div>
-</div>
-<div class="section" id="making-the-build">
-<h2>Making the Build<a class="headerlink" href="#making-the-build" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/Teradata/jaqy.git
-<span class="nb">cd</span> jaqy
-mvn clean package -Dmaven.test.skip<span class="o">=</span><span class="nb">true</span>
-</pre></div>
-</div>
-<p>There are two jars built.</p>
-<div class="highlight-bash"><div class="highlight"><pre>dist/jaqy-1.0.jar
-jaqy-avro/target/jaqy-avro-1.0.jar
-</pre></div>
-</div>
-<p><code class="docutils literal"><span class="pre">jaqy-1.0.jar</span></code> is the standalone package.  <code class="docutils literal"><span class="pre">jaqy-avro-1.0.jar</span></code> is a separate
-addon for AVRO import / export format.</p>
-</div>
+<p>Jaqy 1.0 is almost here.  It is under final touch to add a few more unit tests,
+a bit more documentation etc.</p>
+<p>In the mean time, please see the <a class="reference external" href="build.html">build instruction</a> to create
+a build yourself.</p>
 </div>
 
 

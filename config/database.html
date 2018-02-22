@@ -101,6 +101,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Manual</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../build.html">Building Jaqy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../command.html">Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../comment.html">Comments</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../config.html">Configurations</a><ul class="current">
@@ -112,6 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../export.html">Export Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../import.html">Import Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../largedataset.html">Large Data Set Handling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Plugin Loading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../script.html">Scripting</a></li>
 </ul>
@@ -199,8 +201,10 @@ only be applied before connecting to the database.</p>
 <a class="reference external" href="../command/list.html">.list</a> commands to determine the current catalog.</p>
 <p><code class="docutils literal"><span class="pre">features</span></code> list the functionalities that a given database does not support.</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">&quot;schema&quot;</span> <span class="pre">:</span> <span class="pre">false</span></code> if the database does not support schema.</li>
 <li><code class="docutils literal"><span class="pre">&quot;catalog&quot;</span> <span class="pre">:</span> <span class="pre">false</span></code> if the database does not support catalog.</li>
+<li><code class="docutils literal"><span class="pre">&quot;schema&quot;</span> <span class="pre">:</span> <span class="pre">false</span></code> if the database does not support schema.</li>
+<li><code class="docutils literal"><span class="pre">&quot;stream&quot;</span> <span class="pre">:</span> <span class="pre">false</span></code> if the database does not support binary / character
+streams.</li>
 </ul>
 <p><code class="docutils literal"><span class="pre">schemaSQL</span></code> is used by <a class="reference external" href="../command/pwd.html">.pwd</a> and
 <a class="reference external" href="../command/list.html">.list</a> commands to determine the current schema.</p>

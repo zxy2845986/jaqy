@@ -100,6 +100,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Manual</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="build.html">Building Jaqy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="command.html">Commands</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Comments</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
@@ -110,6 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="export.html">Export Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import.html">Import Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="largedataset.html">Large Data Set Handling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugin.html">Plugin Loading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="script.html">Scripting</a></li>
 </ul>
@@ -191,6 +193,9 @@
 transmitting the text to the database server.  Otherwise, if the text
 does not start with <code class="docutils literal"><span class="pre">.</span></code>, then it is considered as part of SQL statement,
 and would be transmitted to the database server.</p>
+<p>The main reason not to blindly stripping away all the comments is because
+for databases that support query logging, being able to search for queries
+using tokens buried inside comments is very useful.</p>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sql"><div class="highlight"><pre><span class="c1">-- a Jaqy line comment</span>

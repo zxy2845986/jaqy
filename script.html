@@ -100,6 +100,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Manual</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="build.html">Building Jaqy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="command.html">Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comment.html">Comments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configurations</a></li>
@@ -107,9 +108,11 @@
 <li class="toctree-l1"><a class="reference internal" href="exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="export.html">Export Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import.html">Import Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="largedataset.html">Large Data Set Handling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugin.html">Plugin Loading</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Scripting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#expression-expansion">Expression Expansion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#javascript-tips">JavaScript Tips</a></li>
 </ul>
 </li>
@@ -180,15 +183,16 @@
             
   <div class="section" id="scripting">
 <h1>Scripting<a class="headerlink" href="#scripting" title="Permalink to this headline">¶</a></h1>
-<p>Jaqy can be extended in various ways.  And one way to add new functionalities
-is by using its scripting support.  Jaqy uses
-<a class="reference external" href="https://docs.oracle.com/javase/6/docs/technotes/guides/scripting/programmer_guide/">Java Scripting API</a>
-to bind scripting engines.  Since a JavaScript engine is shipped with JDK 6 and
-later, Jaqy uses it as the default script engine.</p>
+<p>Since JDK 6 and later comes with a JavaScript engine, Jaqy uses it to provide
+scripting support.</p>
+<p>Each
+<a class="reference external" href="https://github.com/Teradata/jaqy/blob/master/jaqy-core/src/main/java/com/teradata/jaqy/JaqyInterpreter.java">JaqyInterpreter</a>
+has a JavaScript engine.  Since Jaqy currently only uses a JaqyInterpreter,
+there is effectively just one script engine.</p>
 <div class="section" id="variables">
 <h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
-<p>The variables can be listed using <a class="reference external" href="command/var.html">.var</a> command.  The
-following variables are set up by default.</p>
+<p>The following variables are set up by default.  These variables are all in the
+engine scope.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
@@ -216,13 +220,78 @@ following variables are set up by default.</p>
 <td><a class="reference external" href="https://github.com/Teradata/jaqy/blob/master/jaqy-core/src/main/java/com/teradata/jaqy/JaqyInterpreter.java">JaqyInterpreter</a></td>
 </tr>
 <tr class="row-odd"><td>parent</td>
-<td>Parent variables</td>
+<td>Parent variables (i.e. variables in the global scope)</td>
 </tr>
 <tr class="row-even"><td>session</td>
 <td>Current <a class="reference external" href="https://github.com/Teradata/jaqy/blob/master/jaqy-core/src/main/java/com/teradata/jaqy/Session.java">Session</a></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="expression-expansion">
+<h2>Expression Expansion<a class="headerlink" href="#expression-expansion" title="Permalink to this headline">¶</a></h2>
+<p>By default, Jaqy does expression expansion for all SQL statements.
+The general syntax is <code class="docutils literal"><span class="pre">${</span></code> <cite>expression</cite> <code class="docutils literal"><span class="pre">}</span></code>.  It should be noted that
+Jaqy does an extremely simple regular expression match by looking for the
+pair of tokens, and evaluate the text in between using JavaScript.</p>
+<p>The expression expansion can be disabled by using
+<a class="reference external" href="command/expansion.html">.expansion</a> command.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The reason to use <code class="docutils literal"><span class="pre">${</span></code> and <code class="docutils literal"><span class="pre">}</span></code> pair instead of <code class="docutils literal"><span class="pre">$(</span></code> and <code class="docutils literal"><span class="pre">)</span></code> pair
+as in bash arithmetic expansion is simply because it is possible to allow
+functions to be called without complex parsing.</p>
+<p class="last">Jaqy does use <code class="docutils literal"><span class="pre">$(</span></code> and <code class="docutils literal"><span class="pre">)</span></code> pair
+when dealing with <a class="reference external" href="command/alias.html">.alias</a> command arguments.
+So comparing to bash’s parameter expansion, the usage of the tokens are
+somewhat switched.</p>
+</div>
+<div class="section" id="expression-expansion-example-1">
+<h3>Expression Expansion Example 1<a class="headerlink" href="#expression-expansion-example-1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql"><div class="highlight"><pre>CREATE TABLE MyTable (a INTEGER, b INTEGER);
+CREATE TABLE ControlTable (a INTEGER, b INTEGER);
+
+INSERT INTO MyTable VALUES (1, 1);
+INSERT INTO MyTable VALUES (2, 2);
+
+SELECT * FROM MyTable;
+
+-- Variable Substitution
+INSERT INTO ControlTable VALUES (1, ${activityCount});
+
+SELECT * FROM ControlTable;
+</pre></div>
+</div>
+<p>The result should be the following.</p>
+<div class="highlight-text"><div class="highlight"><pre>a b
+- -
+1 2
+</pre></div>
+</div>
+</div>
+<div class="section" id="expression-expansion-example-2">
+<h3>Expression Expansion Example 2<a class="headerlink" href="#expression-expansion-example-2" title="Permalink to this headline">¶</a></h3>
+<p>The expression expansion evaluation ignores quotes etc.  Such behavior is
+intentional, since it allows custom string values to be generated.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">geoTable</span> <span class="p">(</span><span class="n">a</span> <span class="nb">INTEGER</span><span class="p">,</span> <span class="n">geo</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+
+<span class="p">.</span><span class="n">script</span>
+<span class="n">var</span> <span class="n">rad</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1234</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">x</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="n">sin</span> <span class="p">(</span><span class="n">rad</span><span class="p">);</span>
+<span class="p">.</span><span class="k">end</span> <span class="n">script</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">geoTable</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;POINT(${x} ${Math.cos(rad)})&#39;</span><span class="p">);</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">geoTable</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The result should be the following.</p>
+<div class="highlight-text"><div class="highlight"><pre>a geo
+- --------------------------------------------
+1 POINT(0.901576557064293 0.43261959242745307)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="javascript-tips">
 <h2>JavaScript Tips<a class="headerlink" href="#javascript-tips" title="Permalink to this headline">¶</a></h2>

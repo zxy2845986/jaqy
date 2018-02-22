@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>.var &mdash; Jaqy 1.0 documentation</title>
+  <title>.fetchsize &mdash; Jaqy 1.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Jaqy 1.0 documentation" href="../index.html"/>
         <link rel="up" title="Commands" href="../command.html"/>
-        <link rel="next" title=".version" href="version.html"/>
-        <link rel="prev" title=".unalias" href="unalias.html"/> 
+        <link rel="next" title=".format" href="format.html"/>
+        <link rel="prev" title=".export" href="export.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -101,6 +101,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Manual</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../build.html">Building Jaqy</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../command.html">Commands</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../command_overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_repeatprev.html">.#</a></li>
@@ -119,7 +120,9 @@
 <li class="toctree-l2"><a class="reference internal" href="env.html">.env</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exec.html">.exec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exit.html">.exit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expansion.html">.expansion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="export.html">.export</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">.fetchsize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="format.html">.format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="handler.html">.handler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="help.html">.help</a></li>
@@ -144,8 +147,8 @@
 <li class="toctree-l2"><a class="reference internal" href="script.html">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">.session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sort.html">.sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timer.html">.timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unalias.html">.unalias</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">.var</a></li>
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
@@ -155,6 +158,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../export.html">Export Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../import.html">Import Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../largedataset.html">Large Data Set Handling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Plugin Loading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../script.html">Scripting</a></li>
 </ul>
@@ -207,7 +211,7 @@
         
           <li><a href="../command.html">Commands</a> &raquo;</li>
         
-      <li>.var</li>
+      <li>.fetchsize</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -224,29 +228,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="var">
-<h1>.var<a class="headerlink" href="#var" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">.var</span></code> displays variables.</p>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre>-- 0/2 - 0 ----------------------------------------------------------------
-.var
-activityCount                 The number of rows in the query result
-display                       Display object
-esc                           Escape object
-globals                       Global objects
-interpreter                   Interpreter object
-parent                        Parent variables
-session                       Current session object
--- 0/3 - 0 ----------------------------------------------------------------
+  <div class="section" id="fetchsize">
+<h1>.fetchsize<a class="headerlink" href="#fetchsize" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">.fetchsize</span></code> sets the number of rows to be retrieved by the JDBC driver at
+once.  This setting is useful for handling large data sets.</p>
+<p>By default, the fetch size is 0, which uses the JDBC driver’s default settings.</p>
+<p>It should be noted that this setting may be ignored by the JDBC driver, or
+having to be used in conjunction with other settings to be effective.</p>
+<p>This setting is only active for the current connection.  The setting is
+lost when the connection is closed.</p>
+<div class="section" id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre>usage: .fetchsize [size]
 </pre></div>
 </div>
+<p>Without arguments, the command displays the current session’s fetch size.</p>
 </div>
-<div class="section" id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="script.html">.script</a></li>
-</ul>
+<div class="section" id="jdbc-call">
+<h2>JDBC Call<a class="headerlink" href="#jdbc-call" title="Permalink to this headline">¶</a></h2>
+<p>It corresponds to JDBC
+<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/sql/Statement.html">Statement</a>
+class’s
+<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/sql/Statement.html#setFetchSize-int-">setFetchSize(int rows)</a>
+function.</p>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="c1">-- Exporting large amount of data in PostgreSQL</span>
+<span class="p">.</span><span class="n">autocommit</span> <span class="k">off</span>
+<span class="p">.</span><span class="n">fetchsize</span> <span class="mi">10</span>
+<span class="p">.</span><span class="n">export</span> <span class="n">csv</span> <span class="n">largedataset</span><span class="p">.</span><span class="n">csv</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">MyBigTable</span><span class="p">;</span>
+
+<span class="c1">-- restore settings</span>
+<span class="p">.</span><span class="n">autocommit</span> <span class="k">on</span>
+<span class="p">.</span><span class="n">fetchsize</span> <span class="mi">0</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -260,10 +278,10 @@ session                       Current session object
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="version.html" class="btn btn-neutral float-right" title=".version" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="format.html" class="btn btn-neutral float-right" title=".format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="unalias.html" class="btn btn-neutral" title=".unalias" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="export.html" class="btn btn-neutral" title=".export" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

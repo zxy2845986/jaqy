@@ -101,6 +101,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Manual</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../build.html">Building Jaqy</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../command.html">Commands</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../command_overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_repeatprev.html">.#</a></li>
@@ -119,7 +120,9 @@
 <li class="toctree-l2"><a class="reference internal" href="env.html">.env</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exec.html">.exec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exit.html">.exit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expansion.html">.expansion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="export.html">.export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fetchsize.html">.fetchsize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="format.html">.format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="handler.html">.handler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="help.html">.help</a></li>
@@ -144,8 +147,8 @@
 <li class="toctree-l2"><a class="reference internal" href="script.html">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session.html">.session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sort.html">.sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timer.html">.timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unalias.html">.unalias</a></li>
-<li class="toctree-l2"><a class="reference internal" href="var.html">.var</a></li>
 <li class="toctree-l2"><a class="reference internal" href="version.html">.version</a></li>
 </ul>
 </li>
@@ -155,6 +158,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../exitcode.html">Exit Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../export.html">Export Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../import.html">Import Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../largedataset.html">Large Data Set Handling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Plugin Loading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../script.html">Scripting</a></li>
 </ul>
@@ -240,9 +244,9 @@
 <p>Note that any SQL must end with <code class="docutils literal"><span class="pre">;</span></code> or the parser would consider that more
 text are coming.</p>
 <p>The alias command supports command line arguments, which are separate via
-spaces or tabs.  The first argument is <code class="docutils literal"><span class="pre">$0</span></code> (or <code class="docutils literal"><span class="pre">${0}</span></code>), the second argument
-is <code class="docutils literal"><span class="pre">${1}</span></code>, and so on.  You can specify a range of arguments (e.g. <code class="docutils literal"><span class="pre">${1-2}</span></code>)
-or use open ended argument ranges (e.g. <code class="docutils literal"><span class="pre">${1-}</span></code>).</p>
+spaces or tabs.  The first argument is <code class="docutils literal"><span class="pre">$0</span></code> (or <code class="docutils literal"><span class="pre">$(0)</span></code>), the second argument
+is <code class="docutils literal"><span class="pre">$(1)</span></code>, and so on.  You can specify a range of arguments (e.g. <code class="docutils literal"><span class="pre">$(1-2)</span></code>)
+or use open ended argument ranges (e.g. <code class="docutils literal"><span class="pre">$(1-)</span></code>).</p>
 <p>All the commands and SQL are echoed when they are executed.  If you want to
 hide the display of a command, use <code class="docutils literal"><span class="pre">.&#64;</span></code> prefix.  For instance, instead of
 using <code class="docutils literal"><span class="pre">.open</span></code>, use <code class="docutils literal"><span class="pre">.&#64;open</span></code>.</p>
@@ -257,7 +261,7 @@ CREATE TABLE MyTable (a INTEGER, b INTEGER);
 
 -- Create a short hand for insertion
 .alias ins
-INSERT INTO ${0} VALUES (${1-});
+INSERT INTO $(0) VALUES ($(1-));
 .end alias
 
 -- Testing the insert alias
