@@ -116,8 +116,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../largedataset.html">Large Data Set Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../path.html">Path Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Plugin Loading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../script.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setting.html">Settings</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Miscellaneous</span></p>
 <ul>
@@ -187,6 +189,7 @@
             
   <div class="section" id="avro">
 <h1>avro<a class="headerlink" href="#avro" title="Permalink to this headline">¶</a></h1>
+<p>This feature requires <code class="docutils literal"><span class="pre">jaqy-avro</span></code> plugin.</p>
 <p>AVRO importer supports both positional and name based loading.</p>
 <p>It also supports schema discovery.  The current simple implementation requires
 the entire file to be scanned.</p>
@@ -194,6 +197,7 @@ the entire file to be scanned.</p>
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
 <li>The compression codec is automatically detected.</li>
+<li>The input path must be a file path.</li>
 </ul>
 </div>
 <div class="section" id="example">

@@ -1,12 +1,13 @@
 avro
 ^^^^
 
+This feature requires ``jaqy-avro`` plugin.
+
 Options
 *******
 
 .. code-block:: text
 
-	avro type options:
 	  -c,--compression <arg>   sets the compression codec
 
 .. note::

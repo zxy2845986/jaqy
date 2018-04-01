@@ -103,10 +103,8 @@
 <li class="toctree-l1"><a class="reference internal" href="build.html">Building Jaqy</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Commands</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="command_overview.html">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/_repeatprev.html">.#</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/alias.html">.alias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/autocommit.html">.autocommit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/batchsize.html">.batchsize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/classpath.html">.classpath</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/close.html">.close</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/commit.html">.commit</a></li>
@@ -117,11 +115,11 @@
 <li class="toctree-l2"><a class="reference internal" href="command/echo.html">.echo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/end.html">.end</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/env.html">.env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/eval.html">.eval</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/exec.html">.exec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/exit.html">.exit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/expansion.html">.expansion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/export.html">.export</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/fetchsize.html">.fetchsize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/filter.html">.filter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/format.html">.format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/handler.html">.handler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/help.html">.help</a></li>
@@ -136,15 +134,20 @@
 <li class="toctree-l2"><a class="reference internal" href="command/open.html">.open</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/os.html">.os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/prepare.html">.prepare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/project.html">.project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/protocol.html">.protocol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/pwd.html">.pwd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/quiet.html">.quiet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/rem.html">.rem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/repeat.html">.repeat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/repeatprev.html">.#</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/rollback.html">.rollback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/run.html">.run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/s3.html">.s3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/save.html">.save</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/script.html">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/session.html">.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/set.html">.set</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/sort.html">.sort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/timer.html">.timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/unalias.html">.unalias</a></li>
@@ -158,8 +161,10 @@
 <li class="toctree-l1"><a class="reference internal" href="export.html">Export Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import.html">Import Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="largedataset.html">Large Data Set Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="path.html">Path Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugin.html">Plugin Loading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="script.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setting.html">Settings</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Miscellaneous</span></p>
 <ul>
@@ -235,12 +240,6 @@
 <li class="toctree-l2"><a class="reference internal" href="command_overview.html#relative-path">Relative Path</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="command/_repeatprev.html">.#</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="command/_repeatprev.html#syntax">Syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/_repeatprev.html#example">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/_repeatprev.html#see-also">See Also</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="command/alias.html">.alias</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="command/alias.html#syntax">Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/alias.html#example">Example</a></li>
@@ -250,11 +249,6 @@
 <li class="toctree-l1"><a class="reference internal" href="command/autocommit.html">.autocommit</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="command/autocommit.html#syntax">Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/autocommit.html#jdbc-call">JDBC Call</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="command/batchsize.html">.batchsize</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="command/batchsize.html#syntax">Syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/batchsize.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="command/classpath.html">.classpath</a><ul>
@@ -303,6 +297,12 @@
 <li class="toctree-l2"><a class="reference internal" href="command/env.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="command/eval.html">.eval</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command/eval.html#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/eval.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/eval.html#see-also">See Also</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="command/exec.html">.exec</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="command/exec.html#syntax">Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/exec.html#example">Example</a></li>
@@ -312,28 +312,16 @@
 <li class="toctree-l2"><a class="reference internal" href="command/exit.html#syntax">Syntax</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="command/expansion.html">.expansion</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="command/expansion.html#syntax">Syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/expansion.html#example">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/expansion.html#see-also">See Also</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="command/export.html">.export</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="command/export.html#syntax">Syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/export.html#formats">Formats</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="command/export.html#csv">csv</a></li>
-<li class="toctree-l3"><a class="reference internal" href="command/export.html#json">json</a></li>
-<li class="toctree-l3"><a class="reference internal" href="command/export.html#avro">avro</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="command/export.html#example">Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/export.html#see-also">See Also</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="command/fetchsize.html">.fetchsize</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="command/fetchsize.html#syntax">Syntax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/fetchsize.html#jdbc-call">JDBC Call</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/fetchsize.html#example">Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command/filter.html">.filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command/filter.html#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/filter.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/filter.html#see-also">See Also</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="command/format.html">.format</a><ul>
@@ -421,6 +409,12 @@
 <li class="toctree-l2"><a class="reference internal" href="command/prepare.html#see-also">See Also</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="command/project.html">.project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command/project.html#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/project.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/project.html#see-also">See Also</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="command/protocol.html">.protocol</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="command/protocol.html#syntax">Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/protocol.html#example">Example</a></li>
@@ -448,6 +442,12 @@
 <li class="toctree-l2"><a class="reference internal" href="command/repeat.html#see-also">See Also</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="command/repeatprev.html">.#</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command/repeatprev.html#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/repeatprev.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/repeatprev.html#see-also">See Also</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="command/rollback.html">.rollback</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="command/rollback.html#jdbc-call">JDBC Call</a></li>
 </ul>
@@ -457,15 +457,32 @@
 <li class="toctree-l2"><a class="reference internal" href="command/run.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="command/s3.html">.s3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command/s3.html#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/s3.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/s3.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command/save.html">.save</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command/save.html#example">Example</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="command/script.html">.script</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="command/script.html#syntax">Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/script.html#example">Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/script.html#implementation">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/script.html#see-also">See Also</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="command/session.html">.session</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="command/session.html#syntax">Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/session.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command/set.html">.set</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command/set.html#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/set.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/set.html#see-also">See Also</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="command/sort.html">.sort</a><ul>

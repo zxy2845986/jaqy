@@ -39,7 +39,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Jaqy 1.0 documentation" href="index.html"/>
         <link rel="up" title="Commands" href="command.html"/>
-        <link rel="next" title=".#" href="command/_repeatprev.html"/>
+        <link rel="next" title=".alias" href="command/alias.html"/>
         <link rel="prev" title="Commands" href="command.html"/> 
 
   
@@ -104,10 +104,8 @@
 <li class="toctree-l1"><a class="reference internal" href="build.html">Building Jaqy</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="command.html">Commands</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/_repeatprev.html">.#</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/alias.html">.alias</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/autocommit.html">.autocommit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/batchsize.html">.batchsize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/classpath.html">.classpath</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/close.html">.close</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/commit.html">.commit</a></li>
@@ -118,11 +116,11 @@
 <li class="toctree-l2"><a class="reference internal" href="command/echo.html">.echo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/end.html">.end</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/env.html">.env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/eval.html">.eval</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/exec.html">.exec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/exit.html">.exit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/expansion.html">.expansion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/export.html">.export</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command/fetchsize.html">.fetchsize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/filter.html">.filter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/format.html">.format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/handler.html">.handler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/help.html">.help</a></li>
@@ -137,15 +135,20 @@
 <li class="toctree-l2"><a class="reference internal" href="command/open.html">.open</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/os.html">.os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/prepare.html">.prepare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/project.html">.project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/protocol.html">.protocol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/pwd.html">.pwd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/quiet.html">.quiet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/rem.html">.rem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/repeat.html">.repeat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/repeatprev.html">.#</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/rollback.html">.rollback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/run.html">.run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/s3.html">.s3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/save.html">.save</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/script.html">.script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/session.html">.session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command/set.html">.set</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/sort.html">.sort</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/timer.html">.timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command/unalias.html">.unalias</a></li>
@@ -159,8 +162,10 @@
 <li class="toctree-l1"><a class="reference internal" href="export.html">Export Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import.html">Import Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="largedataset.html">Large Data Set Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="path.html">Path Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugin.html">Plugin Loading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="script.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setting.html">Settings</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Miscellaneous</span></p>
 <ul>
@@ -278,7 +283,7 @@ the current directory.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="command/_repeatprev.html" class="btn btn-neutral float-right" title=".#" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="command/alias.html" class="btn btn-neutral float-right" title=".alias" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="command.html" class="btn btn-neutral" title="Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

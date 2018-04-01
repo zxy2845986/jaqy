@@ -116,8 +116,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../largedataset.html">Large Data Set Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../path.html">Path Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Plugin Loading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../script.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setting.html">Settings</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Miscellaneous</span></p>
 <ul>
@@ -193,34 +195,39 @@ fit into the memory.</p>
 <p>CSV importer also supports schema discovery.</p>
 <div class="section" id="options">
 <h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre>csv type options:
-  -c,--charset &lt;arg&gt;                                    sets the file
-                                                        character set
-  -d,--delimiter &lt;arg&gt;                                  specifies the
-                                                        delimiter
-  -f,--nafilter                                         enables N/A value
-                                                        filtering
-  -h,--header                                           indicates the file has
-                                                        a header
-  -p,--precise                                          Obtain precise decimal
-                                                        points if possible.
-                                                        This option is only
-                                                        meaningful in
-                                                        generating a table
-                                                        schema.  By default,
-                                                        floating values are
-                                                        treated as DOUBLE
-                                                        PRECISION.
-  -r,--rowthreshold &lt;arg&gt;                               sets row threshold in
-                                                        schema determination.
-  -t,--type &lt;default | excel | rfc4180 | mysql | tdf&gt;   sets the csv type.
-  -v,--navalues &lt;arg&gt;                                   specifies a comma
-                                                        delimited list of N/A
-                                                        values.  If it is not
-                                                        specified and
-                                                        --nafilter is enabled,
-                                                        then the default list
-                                                        is used.
+<div class="highlight-text"><div class="highlight"><pre>-c,--charset &lt;arg&gt;                                    sets the file
+                                                      character set
+-d,--delimiter &lt;arg&gt;                                  specifies the
+                                                      delimiter
+-e,--encoding &lt;arg&gt;                                   specifies the external
+                                                      file character set
+-f,--nafilter                                         enables N/A value
+                                                      filtering
+-h,--header                                           indicates the file has
+                                                      a header
+-j,--clob &lt;arg&gt;                                       specifies the external
+                                                      text file column
+-k,--blob &lt;arg&gt;                                       specifies the external
+                                                      binary file column
+-p,--precise                                          Obtain precise decimal
+                                                      points if possible.
+                                                      This option is only
+                                                      meaningful in
+                                                      generating a table
+                                                      schema.  By default,
+                                                      floating values are
+                                                      treated as DOUBLE
+                                                      PRECISION.
+-r,--rowthreshold &lt;arg&gt;                               sets row threshold in
+                                                      schema determination.
+-t,--type &lt;default | excel | rfc4180 | mysql | tdf&gt;   sets the csv type.
+-v,--navalues &lt;arg&gt;                                   specifies a comma
+                                                      delimited list of N/A
+                                                      values.  If it is not
+                                                      specified and
+                                                      --nafilter is enabled,
+                                                      then the default list
+                                                      is used.
 </pre></div>
 </div>
 <div class="admonition note">
@@ -265,6 +272,13 @@ hours to import the data.</p>
 <li>The default schema detection algorithm works fine for the data.</li>
 <li>Or just manually specify the import INSERT statement.</li>
 </ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">For <a class="reference external" href="../path/s3.html">S3 Path</a>, the early scan termination can generate
+warnings.  See
+<a class="reference external" href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/S3ObjectInputStream.html#abort--">abort()</a>
+of S3ObjectInputStream.</p>
+</div>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>

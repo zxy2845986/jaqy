@@ -116,8 +116,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../import.html">Import Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../largedataset.html">Large Data Set Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../path.html">Path Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugin.html">Plugin Loading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../script.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setting.html">Settings</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Miscellaneous</span></p>
 <ul>
@@ -189,8 +191,16 @@
 <h1>csv<a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="options">
 <h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre>-d,--delimiter &lt;arg&gt;                                  specifies the
+<div class="highlight-text"><div class="highlight"><pre>-c,--charset &lt;arg&gt;                                    sets the file
+                                                      character set
+-d,--delimiter &lt;arg&gt;                                  specifies the
                                                       delimiter
+-e,--encoding &lt;arg&gt;                                   specifies the external
+                                                      file character set
+-f,--file &lt;arg&gt;                                       specifies the external
+                                                      file column
+-n,--name &lt;arg&gt;                                       specifies the external
+                                                      file name pattern
 -t,--type &lt;default | excel | rfc4180 | mysql | tdf&gt;   sets the csv type.
 </pre></div>
 </div>

@@ -38,7 +38,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Jaqy 1.0 documentation" href="index.html"/>
-        <link rel="next" title="JDBC Limitations" href="jdbclimitations.html"/>
+        <link rel="next" title="Settings" href="setting.html"/>
         <link rel="prev" title="Plugin Loading" href="plugin.html"/> 
 
   
@@ -109,13 +109,16 @@
 <li class="toctree-l1"><a class="reference internal" href="export.html">Export Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import.html">Import Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="largedataset.html">Large Data Set Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="path.html">Path Formats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plugin.html">Plugin Loading</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Scripting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#expression-expansion">Expression Expansion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#javascript-tips">JavaScript Tips</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="setting.html">Settings</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Miscellaneous</span></p>
 <ul>
@@ -189,6 +192,14 @@ scripting support.</p>
 <a class="reference external" href="https://github.com/Teradata/jaqy/blob/master/jaqy-core/src/main/java/com/teradata/jaqy/JaqyInterpreter.java">JaqyInterpreter</a>
 has a JavaScript engine.  Since Jaqy currently only uses a JaqyInterpreter,
 there is effectively just one script engine.</p>
+<div class="section" id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="command/eval.html">.eval</a> is used to execute a one-liner JavaScript</li>
+<li><a class="reference external" href="command/script.html">.script</a> is used to execute a block of JavaScript
+from a file.</li>
+</ul>
+</div>
 <div class="section" id="variables">
 <h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
 <p>The following variables are set up by default.  These variables are all in the
@@ -216,13 +227,16 @@ engine scope.</p>
 <tr class="row-odd"><td>globals</td>
 <td><a class="reference external" href="https://github.com/Teradata/jaqy/blob/master/jaqy-core/src/main/java/com/teradata/jaqy/Globals.java">Globals</a></td>
 </tr>
-<tr class="row-even"><td>interpreter</td>
+<tr class="row-even"><td>iteration</td>
+<td>The current repeat iteration.</td>
+</tr>
+<tr class="row-odd"><td>interpreter</td>
 <td><a class="reference external" href="https://github.com/Teradata/jaqy/blob/master/jaqy-core/src/main/java/com/teradata/jaqy/JaqyInterpreter.java">JaqyInterpreter</a></td>
 </tr>
-<tr class="row-odd"><td>parent</td>
+<tr class="row-even"><td>parent</td>
 <td>Parent variables (i.e. variables in the global scope)</td>
 </tr>
-<tr class="row-even"><td>session</td>
+<tr class="row-odd"><td>session</td>
 <td>Current <a class="reference external" href="https://github.com/Teradata/jaqy/blob/master/jaqy-core/src/main/java/com/teradata/jaqy/Session.java">Session</a></td>
 </tr>
 </tbody>
@@ -344,7 +358,7 @@ needed something done quickly, it could be an option.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="jdbclimitations.html" class="btn btn-neutral float-right" title="JDBC Limitations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="setting.html" class="btn btn-neutral float-right" title="Settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="plugin.html" class="btn btn-neutral" title="Plugin Loading" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
