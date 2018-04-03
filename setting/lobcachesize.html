@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>nullsort &mdash; Jaqy 1.0 documentation</title>
+  <title>lobcachesize &mdash; Jaqy 1.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Jaqy 1.0 documentation" href="../index.html"/>
         <link rel="up" title="Settings" href="../setting.html"/>
-        <link rel="next" title="JDBC Limitations" href="../jdbclimitations.html"/>
-        <link rel="prev" title="lobcachesize" href="lobcachesize.html"/> 
+        <link rel="next" title="nullsort" href="nullsort.html"/>
+        <link rel="prev" title="fetchsize" href="fetchsize.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -119,8 +119,8 @@
 <li class="toctree-l2"><a class="reference internal" href="echo.html">echo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="expansion.html">expansion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fetchsize.html">fetchsize</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lobcachesize.html">lobcachesize</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">nullsort</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">lobcachesize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nullsort.html">nullsort</a></li>
 </ul>
 </li>
 </ul>
@@ -173,7 +173,7 @@
         
           <li><a href="../setting.html">Settings</a> &raquo;</li>
         
-      <li>nullsort</li>
+      <li>lobcachesize</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -190,35 +190,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="nullsort">
-<h1>nullsort<a class="headerlink" href="#nullsort" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal"><span class="pre">nullsort</span></code> setting sets whether <code class="docutils literal"><span class="pre">NULL</span></code> should be sorted as low or high.</p>
+  <div class="section" id="lobcachesize">
+<h1>lobcachesize<a class="headerlink" href="#lobcachesize" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">lobcachesize</span></code> setting sets the client-side ResultSet LOB cache size.  It
+affects CLOB / BLOB / XML types.  The cache is mainly used for sorting
+purposes.</p>
 <p>This is an interpreter level setting.</p>
-<p>By default, it is low.</p>
+<p>By default, it is 4096.</p>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre>usage: .set nullsort [low | high]
+<div class="highlight-text"><div class="highlight"><pre>usage: .set lobcachesize [size]
 </pre></div>
 </div>
-<p>Executing the setting without arguments will display the nullsort setting
-for the current interpreter.</p>
+<p>Without the size argument, it displays the interpreter’s current LOB cache
+size.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span class="p">.</span><span class="k">set</span> <span class="n">nullsort</span> <span class="n">low</span>
-<span class="p">.</span><span class="n">sort</span> <span class="n">a</span> <span class="k">DESC</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">MyTable</span><span class="p">;</span>
-
-<span class="p">.</span><span class="k">set</span> <span class="n">nullsort</span> <span class="n">high</span>
-<span class="p">.</span><span class="n">sort</span> <span class="n">a</span> <span class="k">DESC</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">MyTable</span><span class="p">;</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">.</span><span class="k">set</span> <span class="n">lobcachesize</span> <span class="mi">64000</span>
+<span class="p">.</span><span class="n">sort</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">XmlTable</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">a</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="../script.html">Scripting</a></li>
 <li><a class="reference external" href="../command/sort.html">.sort</a></li>
 </ul>
 </div>
@@ -234,10 +231,10 @@ for the current interpreter.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../jdbclimitations.html" class="btn btn-neutral float-right" title="JDBC Limitations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="nullsort.html" class="btn btn-neutral float-right" title="nullsort" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="lobcachesize.html" class="btn btn-neutral" title="lobcachesize" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fetchsize.html" class="btn btn-neutral" title="fetchsize" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
